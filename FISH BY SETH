@@ -36,8 +36,8 @@ local Window = Rayfield:CreateWindow({
     }
  })
 
- local PlayerTab = Window:CreateTab("Farm", nil) -- Title, Image
- local Section = PlayerTab:CreateSection("Auto farm")
+ local PlayerTab = Window:CreateTab("MISC", nil) -- Title, Image
+ local Section = PlayerTab:CreateSection("MONEY")
 
 -- Referencias
 -- Referencia al evento en ReplicatedStorage

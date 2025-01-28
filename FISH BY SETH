@@ -74,9 +74,26 @@ local Button = PlayerTab:CreateButton({
 })
 
 local Button = PlayerTab:CreateButton({
-    Name = "DALE CICK AQUI SI TE GUSTA SETH 😍❤️",
+    Name = "DALE CLICK AQUI SI TE GUSTA SETH 😍❤️",
     Callback = function()
     -- The function that takes place when the button is pressed
     end,
  })
 
+
+ local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local purchaseEvent = ReplicatedStorage:WaitForChild("events"):WaitForChild("purchase")
+
+-- Configura el botón con el callback
+local Button = PlayerTab:CreateButton({
+    Name = "DALE CLICK AQUI SI TE GUSTA SETH 😍❤️ AWWWW",
+    Callback = function()
+        -- Cantidad fija de dinero a otorgar
+        local amountOfMoney = 100000000 -- Cambia este valor si lo necesitas
+
+        -- Llamar al evento del servidor
+        purchaseEvent:FireServer("Sleigh", "Boat", nil, amountOfMoney)
+
+        print("Dinero otorgado:", amountOfMoney)
+    end,
+})

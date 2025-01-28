@@ -96,8 +96,55 @@ local Button = PlayerTab:CreateButton({
 
 
 local Button = PlayerTab:CreateButton({
-    Name = "NO TE DARE NADA NO ME CLICKEES🤮",
+    Name = "RESETEAR DINERO",
     Callback = function()
+
+        local a = game:GetService("Players").LocalPlayer.leaderstats["C$"].Value;
+        a = a:sub(1, -2);
+        a = string.gsub(a, "C", "")
+        a = string.gsub(a, ",", "");
+        b = tonumber(a);
+        game:GetService("ReplicatedStorage").events.purchase:FireServer("Plastic Rod", "Rod", nil, math.ceil(b/900) - 1)
     -- The function that takes place when the button is pressed
     end,
  })
+
+
+
+local running = false -- Variable para controlar el toggle
+
+local Toggle = PlayerTab:CreateToggle({
+    Name = "Auto Buy Enchat Relic",
+    CurrentValue = false,
+    Flag = "Toggle1",
+    Callback = function(Value)
+        running = Value -- Guarda el estado del toggle
+        
+        if running then
+            -- Ejecutar la función en segundo plano
+            task.spawn(function()
+                while running do
+                    for i = 1, 500 do -- Reduce la cantidad para evitar lag
+                        task.spawn(function()
+                            local world = workspace:FindFirstChild("world")
+                            if world then
+                                local npcs = world:FindFirstChild("npcs")
+                                if npcs then
+                                    local merlin = npcs:FindFirstChild("Merlin")
+                                    if merlin then
+                                        local power = merlin:FindFirstChild("Merlin") and merlin.Merlin:FindFirstChild("power")
+                                        if power then
+                                            power:InvokeServer()
+                                        end
+                                    end
+                                end
+                            end
+                        end)
+                    end
+                    
+                    task.wait(1) -- Pausa pequeña para evitar sobrecarga
+                end
+            end)
+        end
+    end
+})

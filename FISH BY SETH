@@ -65,23 +65,6 @@ local Slider = PlayerTab:CreateSlider({
    end,
 })
 
--- Botón para confirmar la selección
-local Button = PlayerTab:CreateButton({
-   Name = "Agregar Dinero",
-   Callback = function()
-       local selectedAmount = Slider.CurrentValue -- Obtiene el valor actual del slider
-       purchaseEvent:FireServer("Sleigh", "Boat", nil, selectedAmount) -- Envía la cantidad al servidor
-       print("Dinero otorgado:", selectedAmount)
-   end,
-})
-
-local Button = PlayerTab:CreateButton({
-    Name = "DALE CLICK AQUI SI TE GUSTA SETH 😍❤️",
-    Callback = function()
-    -- The function that takes place when the button is pressed
-    end,
- })
-
 
  local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local purchaseEvent = ReplicatedStorage:WaitForChild("events"):WaitForChild("purchase")
@@ -99,3 +82,10 @@ local Button = PlayerTab:CreateButton({
         print("Dinero otorgado:", amountOfMoney)
     end,
 })
+
+local Button = PlayerTab:CreateButton({
+    Name = "NO TE DARE NADA NO ME CLICKEES🤮",
+    Callback = function()
+    -- The function that takes place when the button is pressed
+    end,
+ })

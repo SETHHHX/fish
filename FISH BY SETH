@@ -1,7 +1,7 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-    Name = "FISH BY SETH TU PAPII",
+    Name = "FISH BY SETH TU PAPII RICO",
     Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
     LoadingTitle = "NO ME HAGO RESPONSABLE ATENTAMENTE TU PAPI SETH",
     LoadingSubtitle = "SETH TU PAPI RICO HUB",
@@ -65,6 +65,17 @@ local Slider = PlayerTab:CreateSlider({
    end,
 })
 
+-- Botón para confirmar la selección
+local Button = PlayerTab:CreateButton({
+   Name = "Agregar Dinero",
+   Callback = function()
+       local selectedAmount = Slider.CurrentValue -- Obtiene el valor actual del slider
+       purchaseEvent:FireServer("Sleigh", "Boat", nil, selectedAmount) -- Envía la cantidad al servidor
+       print("Dinero otorgado:", selectedAmount)
+   end,
+})
+
+
 
  local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local purchaseEvent = ReplicatedStorage:WaitForChild("events"):WaitForChild("purchase")
@@ -82,6 +93,7 @@ local Button = PlayerTab:CreateButton({
         print("Dinero otorgado:", amountOfMoney)
     end,
 })
+
 
 local Button = PlayerTab:CreateButton({
     Name = "NO TE DARE NADA NO ME CLICKEES🤮",
